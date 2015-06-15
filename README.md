@@ -6,3 +6,7 @@ Un repository pour centraliser des scripts, etc. crées par l'équipe de Simplon
 ### slackbot/
 
 Ce répértoire contient un script ruby super basique qui permet de lancer des alertes sur Slack
+
+### theme-child/
+
+Thème enfant de base pour les nouveaux projets WP
