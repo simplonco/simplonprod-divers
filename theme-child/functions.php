@@ -46,6 +46,11 @@ function get_user_role() {
 // MAIN //
 /////////
 
+//Give editor access to the theme options
+$role = get_role('editor'); 
+$role->add_cap('edit_theme_options');
+
+
 //remove admin bar
 show_admin_bar(false);
 
