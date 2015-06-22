@@ -2,6 +2,10 @@
 #slack-memo-inbox.rb
 #Ce script envoie un message sur slack pour rappeler les jours de gestion de inbox
 
+require "net/http"
+require "uri"
+require "json"
+
 #CLASS
 class SlackMemo
 	attr_accessor :team_odd_weeks
@@ -56,10 +60,21 @@ class SlackMemo
 	end
 
 	def send_message_to_slack(message)
-		if(message)
-			cmd = 'curl -X POST --data-urlencode \'payload={"channel": "' + @slack_channel  + '", "username": "' + @slack_username + '", "text": "' + message + '", "icon_emoji": "'+ @slack_emoji + '"}\' ' + @slack_url
-			system(cmd)
-		end
+	  
+	  if (message != "")
+	    uri = URI.parse(@slack_url)
+	    
+	    http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.add_field('data-urlencode', 'playload')
+      request.body = {'channel'=>@slack_channel, 'username'=>@slack_username, 'text'=>message, 'icon_emoji'=>@slack_emoji}.to_json
+      response = http.request(request)
+	    p response.body
+	  end
+	  
 	end
 
 end
