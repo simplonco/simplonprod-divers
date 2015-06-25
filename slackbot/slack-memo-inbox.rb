@@ -37,7 +37,7 @@ class SlackMemo
     self.send_message_to_slack(user + ' petit rappel pour inbox!')
   end
   
-  def memo_lunch_user
+  def memo_custom_user
     if ARGV[0] == "msg1"
       self.send_message_to_slack("@group" + " " + @messages9[is_day - 1])
     end
@@ -83,13 +83,13 @@ end
 #INIT
 team1 = ["@fred","@elise","@renversou","@nicolas","@laurepichot"]
 team2 = ["@charlotte","@zemaud","@camille","@tony.tiratay","@acoriol"]
-message9 = ["petit rappel pour le lunch à 13h! Pensez à preparez vos paniers repas!", "aaaa", "bbbb", "cccc!", "dddd", "eeee", "ffff"]
-message11 = ["petit rappel pour le lunch à 13h! La réunion approche!", "aaaa", "bbbb", "cccc!", "dddd", "eeee", "ffff"]
+message9 = [ "", "", "", "", "Memo: it's slack day! Pas d'email dans l'équipe aujourd'hui..."]
+message11 = ["Petit rappel pour le lunch à 13h! Pensez à preparez vos paniers repas!", "", "", "", "", ]
 
 
 #MAIN 
 
 memo = SlackMemo.new(team1,team2,message9,message11);
 
-memo.memo_today_user();
-memo.memo_lunch_user();
+memo.memo_today_user();#memo pour inbox
+memo.memo_custom_user();#memo différents suivants le jour
