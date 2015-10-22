@@ -1,16 +1,16 @@
 # Theory
 
-    ## Relational Algebra
+## Relational Algebra
 
-    ## Tuple relational calculus
+## Tuple relational calculus
 
-    ## Languages
+## Languages
 
-	### Data Definition Language 
+### Data Definition Language 
 
-	### Data Manipulation Language
+### Data Manipulation Language
 
-	### Data Control Language
+### Data Control Language
 
 # links
 
